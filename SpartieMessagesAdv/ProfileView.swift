@@ -39,6 +39,7 @@ struct ProfileView: View {
                     Toggle("Favorite", isOn: $isFavorite)
                 }
             }
+            .listStyle(.plain)
             .navigationTitle(mode.title)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
@@ -84,4 +85,7 @@ enum ProfileMode {
 }
 
 #Preview {
+    ProfileView(mode: .add)
+        .environmentObject(ViewModel())
+    
 }

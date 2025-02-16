@@ -31,20 +31,27 @@ struct LoginView: View {
                 .background(Color(.systemGray6))
                 .clipShape(.rect(cornerRadius: 10))
             
-            Button("Sign In"){
+            Button {
                 if username == "spartie" && password == "messages" {
                     viewModel.isAuthenticated = true
                 }
-                else{
+                else {
                     hasError = true
                 }
+            } label: {
+                Text("Sign In")
+                    .font(.subheadline)
+                    .fontWeight(.semibold)
+                    .foregroundStyle(.white)
+                    .frame(width:360, height:44)
+                    .background(Color(.systemBlue))
+                    .clipShape(.rect(cornerRadius: 10))
+                    .padding(.vertical)
             }
-            .font(.subheadline)
-            .fontWeight(.semibold)
-            .foregroundStyle(.white)
-            .frame(width:360, height:44)
-            .background(Color(.systemBlue))
-            .clipShape(.rect(cornerRadius: 10))
+            
+
+            
+            
         }
         .padding()
         
