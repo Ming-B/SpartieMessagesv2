@@ -11,7 +11,6 @@ struct ProfileView: View {
     @Environment(\.dismiss) var dismiss
     @EnvironmentObject var viewModel: ViewModel
     let mode: ProfileMode
-
     
     @State private var firstName:String
     @State private var lastName:String
@@ -32,14 +31,13 @@ struct ProfileView: View {
     
     var body: some View {
         NavigationView {
-            Form {
+            List {
                 Section(header: Text("Contact Info")) {
                     TextField("First Name", text: $firstName)
                     TextField("Last Name", text: $lastName)
                     Toggle("Favorite", isOn: $isFavorite)
                 }
             }
-            .listStyle(.plain)
             .navigationTitle(mode.title)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
@@ -83,6 +81,7 @@ enum ProfileMode {
         }
     }
 }
+
 
 #Preview {
     ProfileView(mode: .add)

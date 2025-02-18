@@ -8,15 +8,18 @@
 import SwiftUI
 
 struct MessageView: View {
-    let contact: Contact
     @State private var newMessage:String = ""
     @EnvironmentObject var viewModel: ViewModel
+    let contact: Contact
     
     var body: some View {
         VStack{
+            NavigationLink(destination: ProfileView(mode: .edit(contact))){
+                ContactProfileHeader(contact: contact)
+                    .padding(.top)
+            }
             
-            ContactProfileHeader(contact: contact)
-                .padding(.top)
+            
             
             List(contact.messages) { message in
                 HStack{
@@ -56,7 +59,6 @@ struct MessageView: View {
             }
             .padding()
         }
-        .navigationTitle("Messages")
         
     }
     
@@ -77,22 +79,32 @@ struct ContactProfileHeader: View {
     let contact:Contact
     
     var body: some View {
-        HStack{
-            Image(contact.photoName ?? "DefaultProfile")
-                .resizable()
-                .frame(width:50, height:50)
-                .clipShape(Circle())
+        
+            HStack(alignment: .top){
+                Image(contact.photoName ?? "DefaultProfile")
+                    .resizable()
+                    .frame(width:50, height:50)
+                    .clipShape(Circle())
             
-            VStack(alignment: .leading){
-                Text("\(contact.firstName)")
-                    .font(.headline)
                 
-                Text("\(contact.lastName)")
-                    .font(.subheadline)
-                    .foregroundStyle(.gray)
+                VStack(){
+                    Text("\(contact.firstName)")
+                        .font(.headline)
+                        .foregroundStyle(.black)
+                    
+                    Text("\(contact.lastName)")
+                        .font(.subheadline)
+                        .foregroundStyle(.gray)
+                    
+                }
+                Spacer()
             }
-        }
-        .padding()
+            .padding()
+            Spacer()
+            
+            
+        
+        
     }
     
 }

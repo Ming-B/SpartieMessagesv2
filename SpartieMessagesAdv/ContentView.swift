@@ -12,21 +12,22 @@ struct ContentView: View {
     @State private var showingAddContact = false
    
     var body: some View {
-        NavigationView {
+
+        NavigationView{
             List(viewModel.contacts) { contact in
                 NavigationLink(destination: MessageView(contact: contact)) {
-                    ContactRow(contact: contact)
+                    ContactRow(contact:contact)
                 }
             }
             .navigationTitle("Contacts")
             .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button(action: { showingAddContact = true }) {
+                ToolbarItem(placement: .navigationBarTrailing){
+                    Button(action: {showingAddContact = true}){
                         Image(systemName: "plus")
                     }
                 }
             }
-            .sheet(isPresented: $showingAddContact) {
+            .sheet(isPresented: $showingAddContact){
                 ProfileView(mode: .add)
                     .environmentObject(viewModel)
             }
