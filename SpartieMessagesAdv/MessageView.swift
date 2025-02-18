@@ -75,38 +75,30 @@ struct MessageView: View {
 }
 
 
-struct ContactProfileHeader: View {
-    let contact:Contact
+
+struct ContactProfileHeader: View{
+    let contact: Contact
     
     var body: some View {
-        
-            HStack(alignment: .top){
-                Image(contact.photoName ?? "DefaultProfile")
-                    .resizable()
-                    .frame(width:50, height:50)
-                    .clipShape(Circle())
+        HStack(alignment: .top){
+            Image(contact.photoName ?? "DefaultProfile")
+                .resizable()
+                .frame(width:50, height:50)
+                .clipShape(Circle())
             
+            VStack{
+                Text("\(contact.firstName)")
+                    .font(.headline)
+                    .foregroundStyle(.black)
                 
-                VStack(){
-                    Text("\(contact.firstName)")
-                        .font(.headline)
-                        .foregroundStyle(.black)
-                    
-                    Text("\(contact.lastName)")
-                        .font(.subheadline)
-                        .foregroundStyle(.gray)
-                    
-                }
-                Spacer()
+                Text("\(contact.lastName)")
+                    .font(.headline)
+                    .foregroundStyle(.gray)
             }
-            .padding()
             Spacer()
-            
-            
-        
-        
+        }
+        .padding()
     }
-    
 }
 
 #Preview {
