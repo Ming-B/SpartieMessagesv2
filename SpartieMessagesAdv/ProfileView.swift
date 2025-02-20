@@ -19,13 +19,13 @@ struct ProfileView: View {
     init(mode: ProfileMode) {
         self.mode = mode
         if case .edit(let contact) = mode {
-            _firstName = State(initialValue: contact.firstName)
-            _lastName = State(initialValue: contact.lastName)
-            _isFavorite = State(initialValue: contact.isFavorite)
+            self._firstName = State(initialValue: contact.firstName)
+            self._lastName = State(initialValue: contact.lastName)
+            self._isFavorite = State(initialValue: contact.isFavorite)
         } else {
-            _firstName = State(initialValue: "")
-            _lastName = State(initialValue: "")
-            _isFavorite = State(initialValue: false)
+            self._firstName = State(initialValue: "")
+            self._lastName = State(initialValue: "")
+            self._isFavorite = State(initialValue: false)
         }
     }
     
