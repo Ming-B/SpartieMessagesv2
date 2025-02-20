@@ -22,10 +22,12 @@ struct ContentView: View {
             .navigationTitle("Contacts")
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing){
-                    Button(action: {showingAddContact = true}){
+                    Button(action: {showingAddContact = true}) {
                         Image(systemName: "plus")
                     }
                 }
+                
+                
             }
             .sheet(isPresented: $showingAddContact){
                 ProfileView(mode: .add)
