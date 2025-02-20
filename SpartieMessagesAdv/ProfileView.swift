@@ -45,6 +45,7 @@ struct ProfileView: View {
                         saveContact()
                         dismiss()
                     }
+                    .disabled(firstName.isEmpty)
                 }
             }
         }
@@ -58,6 +59,7 @@ struct ProfileView: View {
                 lastName: lastName,
                 photoName: nil,
                 isFavorite: isFavorite
+                
             )
             viewModel.addContact(newContact)
         case .edit(let existingContact):
